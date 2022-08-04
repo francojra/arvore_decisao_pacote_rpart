@@ -26,8 +26,7 @@ view(titanic)
 
 # Gerando o modelo -------------------------------------------------------------------------------------------------------------------------
 
-fit <- rpart(formula = titanic$survived ~ sex +
-             sibsp + parch + embarked + fare,
+fit <- rpart(formula = titanic$survived ~ .,
              method = 'class',
              data = titanic,
              parms = list(split = "gini"), # Métrica para gerar as divisões dos nós
@@ -48,3 +47,9 @@ barplot(fit$variable.importance)
 fit$cptable
 
 plotcp(fit)
+
+# Visualização da árvore de decisão --------------------------------------------------------------------------------------------------------
+
+rpart.plot(fit, type = 0, extra = 101, box.palette = 'GnBu',
+           branch.lty = 3, shadow.col = 'gray', 
+           cex = 1)
