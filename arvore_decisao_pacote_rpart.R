@@ -60,6 +60,6 @@ predi
 confusao <- table(Orginal = titanic$survived,
                   preditos = predi)
 
-# Acurácia
+# Acurácia do modelo -----------------------------------------------------------------------------------------------------------------------
 
 sum(diag(confusao)) / sum(confusao)
