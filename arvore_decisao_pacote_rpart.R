@@ -25,7 +25,7 @@ head(titanic)
 
 # Gerando o modelo -------------------------------------------------------------------------------------------------------------------------
 
-fit <- rpart(formula = dados$sex ~ survived,
+fit <- rpart(formula = titanic$sex ~ survived,
              sibsp, parch,
              method = 'class',
              data = titanic,
