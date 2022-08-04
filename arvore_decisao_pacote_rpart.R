@@ -53,3 +53,13 @@ plotcp(fit)
 rpart.plot(fit, type = 0, extra = 101, box.palette = 'GnBu',
            branch.lty = 3, shadow.col = 'gray', 
            cex = 1)
+
+predi <- predict(object = fit, newdata = titanic, type = 'class')
+predi
+
+confusao <- table(Orginal = titanic$survived,
+                  preditos = predi)
+
+# Acurácia
+
+sum(diag(confusao)) / sum(confusao)
