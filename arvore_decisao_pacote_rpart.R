@@ -45,3 +45,6 @@ barplot(fit$variable.importance)
 ### a bordo, depois valor da tarifa de passageiro e a variável que
 ### menos explica é o número de cônjuges/irmãos a bordo.
 
+fit$cptable
+
+plotcp(fit)
