@@ -26,7 +26,7 @@ view(titanic)
 
 # Gerando o modelo -------------------------------------------------------------------------------------------------------------------------
 
-fit <- rpart(formula = titanic$sex ~ survived +
+fit <- rpart(formula = titanic$survived ~ sex +
              sibsp + parch + embarked + fare,
              method = 'class',
              data = titanic,
@@ -38,3 +38,10 @@ fit <- rpart(formula = titanic$sex ~ survived +
                maxdepth = 25)) # Quantidade máxima de nós
 
 fit$variable.importance
+barplot(fit$variable.importance)
+
+### Interpretação: a variável que melhor explica a sobrevivência
+### é a variável 'sexo', seguido da variável número de pais/filhos
+### a bordo, depois valor da tarifa de passageiro e a variável que
+### menos explica é o número de cônjuges/irmãos a bordo.
+
