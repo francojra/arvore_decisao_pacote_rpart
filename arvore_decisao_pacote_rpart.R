@@ -22,3 +22,17 @@ titanic <- "https://gitlab.com/dados/open/raw/master/titanic.csv" %>%
     embarked = as.factor(embarked),
     sex = as.factor(sex)) 
 head(titanic)
+
+# Gerando o modelo -------------------------------------------------------------------------------------------------------------------------
+
+fit <- rpart(formula = dados$sex ~ survived,
+             sibsp, parch,
+             method = 'class',
+             data = titanic,
+             parms = list(split = "gini"), # Métrica para gerar as divisões dos nós
+             cp = 0.0002, # Parâmetro complexo/menor complexidade entre os nós
+             control = rpart.control(
+               minsplit = 1, # Quantidade mínima de linhas em cada nó       
+               minbucket = 1, # Quantidade mínima de linhas em cada nó terminal
+               maxdepth = 25)) # Quantidade máxima de nós
+             
